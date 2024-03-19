@@ -1,0 +1,36 @@
+---
+dotfiles_repo: "https://github.com/m-housh/dotfiles.git"
+dotfiles_repo_version: "main"
+dotfiles_repo_accept_hostkey: false
+dotfiles_repo_local_destination: "~/.dotfiles"
+
+xdg_config_home: "~/.config"
+
+# These are files that need to be linked in the user's home
+# directory '~/'. The path should be from the root of the dotfiles repo
+# to the file that is getting linked.
+home_links:
+  - "zsh/.zshenv"
+
+# These files get linked in the `xdg_config_home` directory.
+# These are specified as a path from the root of the dotfiles repo, if
+# they get linked directly then they can just simply be the path, if
+# need to get linked inside of a sub-directory in the `xdg_config_home` then
+# they can use the `src:...dest:` style, where `src` is  the path from the root
+# of the dotfiles repo and `dest` is the sub-directory in `xdg_config_home`.
+xdg_config_home_links:
+  - "espanso/espanso"
+  - "git/git"
+  - "nvim/m-housh"
+  - "nap"
+  - "tmux/tmux-powerline"
+  - src: "tmux/tmux.conf"
+    dest: "tmux"
+  - "wezterm"
+  - src: "zsh/config/.zshrc"
+    dest: "zsh"
+  - src: "zsh/config/functions"
+    dest: "zsh"
+  - src: "zsh/config/zsh-functions"
+    dest: "zsh"
+
