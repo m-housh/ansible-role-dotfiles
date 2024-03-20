@@ -32,6 +32,8 @@ xdg_config_home_links:
   - "wezterm"
   - src: "zsh/config/.zshrc"
     dest: "zsh"
+  - src: "zsh/config/.zshenv"
+    dest: "zsh"
   - src: "zsh/config/functions"
     dest: "zsh"
   - src: "zsh/config/zsh-functions"

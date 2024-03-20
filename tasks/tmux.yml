@@ -2,7 +2,7 @@
 - name: Install tmux plugin manager.
   ansible.builtin.git:
     repo: "https://github.com/tmux-plugins/tpm"
-    dest: "{{ xdg_config_home }}/tmux/plugins"
+    dest: "{{ xdg_config_home }}/tmux/plugins/tpm"
     version: "master"
     accept_hostkey: false
   become: false
