@@ -42,5 +42,5 @@ xdg_config_home_links:
 # need to get linked inside of a sub-directory in the `xdg_config_home` then
 # they can use the `src:...dest:` style, where `src` is  the path from the root
 # of the dotfiles repo and `dest` is the sub-directory in `xdg_config_home`.
-xdg_config_home_links:
+xdg_local_home_links:
   - "scripts/scripts"
