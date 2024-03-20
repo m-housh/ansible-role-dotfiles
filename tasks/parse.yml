@@ -1,0 +1,34 @@
+---
+- name: Parse home links
+  ansible.builtin.set_fact:
+    parsed_links: "{{ parsed_links | default([]) +
+        [{
+          'src': [dotfiles_repo_local_destination, item] | join('/'),
+          'dest': ['~', item | basename] | join('/')
+        }]
+      }}"
+  loop: "{{ home_links }}"
+
+- name: Parse xdg_config_home links
+  ansible.builtin.set_fact:
+    parsed_links: "{{ parsed_links | default([]) +
+        [{
+          'src': [dotfiles_repo_local_destination, item.src | default(item)] | join('/'),
+          'dest': [xdg_config_home, item.dest | default(omit), item.src | default(item) | basename] |
+                  reject('equalto', omit) |
+                  join('/')
+        }]
+      }}"
+  loop: "{{ xdg_config_home_links }}"
+
+- name: Parse xdg_local_home links
+  ansible.builtin.set_fact:
+    parsed_links: "{{ parsed_links | default([]) +
+        [{
+          'src': [dotfiles_repo_local_destination, item.src | default(item)] | join('/'),
+          'dest': [xdg_local_home, item.dest | default(omit), item.src | default(item) | basename] |
+                  reject('equalto', omit) |
+                  join('/')
+        }]
+      }}"
+  loop: "{{ xdg_local_home_links }}"
