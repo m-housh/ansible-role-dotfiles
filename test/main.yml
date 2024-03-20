@@ -2,27 +2,27 @@
 - name: Test
   hosts: all
   vars:
+    dotfiles_repo: "https://github.com/m-housh/dotfiles.git"
+    dotfiles_repo_version: "main"
+    dotfiles_repo_accept_hostkey: false
+    dotfiles_repo_local_destination: "~/.dotfiles"
+    home_path: "~"
     xdg_config_home: "~/.config"
-    items:
-      - "src/one"
-      - "src/two"
-      - src: "foo/bar"
-        dest: "baz"
+    xdg_config_home_links:
+      - "nvim/m-housh"
+      - src: "tmux/tmux.conf"
+        dest: "tmux"
+    home_links:
+      - "zsh/.zshenv"
+#   roles:
+#     - role: '../'
 
   tasks:
-    - name: Parse into items_dict.
-      ansible.builtin.set_fact:
-        items_dict_list: "{{
-          items_dict_list | default([])
-          + [{
-              'src': item.src | default(item),
-              'dest': ([item.dest | default(omit), item.src | default(item) | basename] | reject('equalto', omit) | join('/'))
-            }]
-          }}"
-      loop: "{{ items }}"
+    - name: Test task.
+      include_tasks: ../tasks/main.yml
 
-    - name: Parse values into json.
-      ansible.builtin.debug:
-        msg: "{{ items_dict_list | to_yaml }}"
+#     - name: Parse values into json.
+#       ansible.builtin.debug:
+#         msg: "{{ parsed_links | to_yaml }}"
 
 
