@@ -1,0 +1,28 @@
+---
+dependencies: []
+
+galaxy_info:
+  role_name: dotfiles
+  author: m-housh
+  description:  Dotfiles  installation for Unix/Linux.
+  company: "Housh - Home Energy"
+  license: "license (BSD, MIT)"
+  min_ansible_version: 2.14
+  platforms:
+    - name: GenericUNIX
+      versions:
+        - all
+        - any
+    - name: GenericBSD
+      versions:
+        - all
+        - any
+    - name: GenericLinux
+      versions:
+        - all
+        - any
+  galaxy_tags:
+    - development
+    - system
+    - dotfiles
+    - configuration

@@ -20,6 +20,7 @@ home_links:
 # they can use the `src:...dest:` style, where `src` is  the path from the root
 # of the dotfiles repo and `dest` is the sub-directory in `xdg_config_home`.
 xdg_config_home_links:
+  - "ansible"
   - "espanso/espanso"
   - "git/git"
   - "nvim/m-housh"
