@@ -9,6 +9,12 @@
 
 - import_tasks: parse.yml
 
+- name: Ensure config home exists.
+  ansible.builtin.file:
+    path: "{{ xdg_config_home }}"
+    mode: '0755'
+    state: directory
+
 - name: Ensure all dotfiles in are links.
   ansible.builtin.command: "ls -F {{ item.dest }}"
   failed_when: false
