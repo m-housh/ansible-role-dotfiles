@@ -44,7 +44,13 @@
   become: false
   with_items: "{{ parsed_links }}"
 
-- import_tasks: tmux.yml
+- name: Install tmux plugin manager.
+  ansible.builtin.git:
+    repo: "https://github.com/tmux-plugins/tpm"
+    dest: "{{ xdg_config_home }}/tmux/plugins/tpm"
+    version: "master"
+    accept_hostkey: false
+  become: false
 
 - name: Check nvim config exists.
   ansible.builtin.stat:
