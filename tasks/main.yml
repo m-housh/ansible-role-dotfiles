@@ -53,17 +53,3 @@
   become: false
   tags: tmux-plugins
 
-- name: Check nvim config exists.
-  ansible.builtin.stat:
-    path: "{{ xdg_config_home }}/m-housh/init.lua"
-  register: nvim_stat
-  tags: nvim-plugins
-
-- name: Install nvim plugins.
-  ansible.builtin.shell: -u "{{ xdg_config_home | quote }}/m-housh/init.lua" --headless "+Lazy! sync" +qa
-  args:
-    executable: /opt/homebrew/bin/nvim
-  when: nvim_stat.stat.exists
-  tags: nvim-plugins
-
-
