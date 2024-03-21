@@ -58,10 +58,9 @@
   register: nvim_stat
 
 - name: Install nvim plugins.
-  ansible.builtin.shell:
-    cmd: -u "{{ xdg_config_home | quote }}/m-housh/init.lua" --headless "+Lazy! sync" +qa
-    args:
-      executable: /opt/homebrew/bin/nvim
+  ansible.builtin.shell: -u "{{ xdg_config_home | quote }}/m-housh/init.lua" --headless "+Lazy! sync" +qa
+  args:
+    executable: /opt/homebrew/bin/nvim
   when: nvim_stat.stat.exists
 
 
