@@ -47,3 +47,7 @@
 
 - import_tasks: tmux.yml
 
+- name: Install nvim plugins.
+  ansible.builtin.shell:  nvim --headless "+Lazy! sync" +qa
+
+
