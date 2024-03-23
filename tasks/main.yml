@@ -65,6 +65,7 @@
         mode: '0700'
       when: zsh_env_stat.stat.exists is false
   tags: zsh-env
+  become: true
 
 - name: Install tmux plugin manager.
   ansible.builtin.git:
