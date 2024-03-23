@@ -53,7 +53,7 @@
 
     - name: Ensure local zsh directory exists.
       ansible.builtin.file:
-        path: "{{ xdg_local_home }}/zsh }}"
+        path: "{{ xdg_local_home }}/zsh"
         state: directory
         mode: "0600"
       when: zsh_env_stat.stat.exists is false
