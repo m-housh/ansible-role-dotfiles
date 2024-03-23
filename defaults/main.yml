@@ -59,4 +59,4 @@ zsh_local_env_path: "{{ xdg_local_home }}/zsh/env.zsh"
 vault_files_to_copy:
   - src: ssh/config
     dest: "~/.ssh/config"
-    mode: '0600'
+    mode: '0666'
