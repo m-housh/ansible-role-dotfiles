@@ -48,20 +48,20 @@
   block:
     - name: Check if local file exists.
       ansible.builtin.stat:
-        path: "{{ xdg_local_home }}/zsh/env"
+        path: "{{ zsh_local_env_path }}"
       register: zsh_env_stat
 
     - name: Ensure local zsh directory exists.
       ansible.builtin.file:
-        path: "{{ xdg_local_home }}/zsh"
+        path: "{{ zsh_local_env_path | dirname }}"
         state: directory
         mode: "0755"
       when: zsh_env_stat.stat.exists is false
 
     - name: Create local zsh env file.
       ansible.builtin.copy:
-        src: files/zsh-env
-        dest: "{{ xdg_local_home }}/zsh/env"
+        src: files/env.zsh
+        dest: "{{ zsh_local_env_path }}"
         mode: '0755'
       when: zsh_env_stat.stat.exists is false
   tags: zsh-env

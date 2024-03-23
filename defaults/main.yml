@@ -47,3 +47,6 @@ xdg_config_home_links:
 # of the dotfiles repo and `dest` is the sub-directory in `xdg_config_home`.
 xdg_local_home_links:
   - "scripts/scripts"
+
+# The location for local only zsh environment variable overrides.
+zsh_local_env_path: "{{ xdg_local_home }}/zsh/env.zsh"
