@@ -55,8 +55,8 @@ zsh_local_env_path: "{{ xdg_local_home }}/zsh/env.zsh"
 # move them to their appropriate locations.  These should be specified with
 # the `src` being the path from the dotfiles_repo_local_destination and the
 # `dest` being the path on the client to copy files to, and `mode` is the
-# file permissions to apply to the files.
+# file permissiosns to apply to the files.
 vault_files_to_copy:
   - src: ssh/config
-    dest: ~/.ssh/config
+    dest: "~/.ssh/config"
     mode: '0600'
