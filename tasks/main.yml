@@ -48,12 +48,12 @@
   block:
     - name: Check if local file exists.
       ansible.builtin.stat:
-        path: "{{ xdg_config_home }}/zsh/env"
+        path: "{{ xdg_local_home }}/zsh/env"
       register: zsh_env_stat
 
     - name: Ensure local zsh directory exists.
       ansible.builtin.file:
-        path: "{{ xdg_config_home }}/zsh }}"
+        path: "{{ xdg_local_home }}/zsh }}"
         mode: "0600"
       when: zsh_env_stat.stat.exists is false
 
