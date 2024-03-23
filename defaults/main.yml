@@ -55,8 +55,11 @@ zsh_local_env_path: "{{ xdg_local_home }}/zsh/env.zsh"
 # move them to their appropriate locations.  These should be specified with
 # the `src` being the path from the dotfiles_repo_local_destination and the
 # `dest` being the path on the client to copy files to, and `mode` is the
-# file permissiosns to apply to the files.
+# file permissiosns to apply to the files, `dirmode` is permissions to the
+# parent directory for the destination files to be written, if they are created
+# by the playbook.
 vault_files_to_copy:
   - src: ssh/config
     dest: "~/.ssh/config"
+    dirmode: '0755'
     mode: '0600'

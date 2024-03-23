@@ -80,7 +80,7 @@
     - name: Ensure parent directories exist.
       ansible.builtin.file:
         path: "{{ item.dest | dirname }}"
-        mode: '0755'
+        mode: "{{ item.dirmode }}"
         state: directory
       with_items: "{{ vault_files_to_copy }}"
     - name: Copy vault files.
@@ -89,4 +89,5 @@
         dest: "{{ item.dest }}"
         mode: "{{ item.mode }}"
       with_items: "{{ vault_files_to_copy }}"
+  when: vault_files_to_copy | default([]) | count > 0
   tags: vault-files
