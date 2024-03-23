@@ -75,7 +75,7 @@
   become: false
   tags: tmux-plugins
 
-- name: Ensure vault copy files.
+- name: Ensure vault files.
   block:
     - name: Ensure parent directories exist.
       ansible.builtin.file:
@@ -89,4 +89,5 @@
         dest: "{{ item.dest }}"
         mode: "{{ item.mode }}"
       with_items: "{{ vault_files_to_copy }}"
+  become: true
   tags: vault-files
