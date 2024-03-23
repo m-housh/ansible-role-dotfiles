@@ -75,3 +75,19 @@
   become: false
   tags: tmux-plugins
 
+- name: Ensure vault copy files.
+  block:
+    - name: Ensure parent directories exist.
+      ansible.builtin.file:
+        path: "{{ item.dest | dirname }}"
+        mode: "{{ item.mode }}"
+        state: directory
+      with_items: "{{ vault_files_to_copy }}"
+    - name: Copy vault files.
+      ansible.builtin.copy:
+        src: "{{ dotfiles_repo_local_destination }}/{{ item.src }}"
+        dest: "{{ item.dest }}"
+        mode: "{{ item.mode }}"
+      with_items: "{{ vault_files_to_copy }}"
+  when: (vault_files_to_copy.count | int) > 0
+  tags: vault-files
