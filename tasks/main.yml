@@ -89,5 +89,4 @@
         dest: "{{ item.dest }}"
         mode: "{{ item.mode }}"
       with_items: "{{ vault_files_to_copy }}"
-  become: true
   tags: vault-files
