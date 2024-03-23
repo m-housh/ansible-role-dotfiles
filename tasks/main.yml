@@ -44,6 +44,21 @@
   become: false
   with_items: "{{ parsed_links }}"
 
+- name: Create local zsh environment file.
+  block:
+    - name: Check if local file exists.
+      ansible.builtin.stat:
+        path: "{{ xdg_config_home }}/zsh/env"
+      register: zsh_env_stat
+
+    - name: Create local zsh env file.
+      ansible.builtin.copy:
+        src: zsh-env
+        dest: "{{ xdg_local_home }}/zsh/env"
+        mode: '0700'
+      when: zsh_env_stat.stat.exists is false
+  tags: zsh-env
+
 - name: Install tmux plugin manager.
   ansible.builtin.git:
     repo: "https://github.com/tmux-plugins/tpm"
