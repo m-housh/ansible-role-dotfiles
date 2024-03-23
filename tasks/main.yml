@@ -55,14 +55,14 @@
       ansible.builtin.file:
         path: "{{ xdg_local_home }}/zsh"
         state: directory
-        mode: "0600"
+        mode: "0660"
       when: zsh_env_stat.stat.exists is false
 
     - name: Create local zsh env file.
       ansible.builtin.copy:
         src: files/zsh-env
         dest: "{{ xdg_local_home }}/zsh/env"
-        mode: '0700'
+        mode: '0770'
       when: zsh_env_stat.stat.exists is false
   tags: zsh-env
   become: true
