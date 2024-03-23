@@ -89,6 +89,5 @@
         dest: "{{ item.dest }}"
         mode: "{{ item.mode }}"
       with_items: "{{ vault_files_to_copy }}"
-  when: (vault_files_to_copy.count | int) > 0
   become: true
   tags: vault-files
