@@ -5,7 +5,7 @@ dotfiles_repo_accept_hostkey: false
 dotfiles_repo_local_destination: "~/.dotfiles"
 
 xdg_config_home: "~/.config"
-xdg_local_home: "~/.local"
+xdg_data_home: "~/.local/share"
 
 # These are files that need to be linked in the user's home
 # directory '~/'. The path should be from the root of the dotfiles repo
@@ -25,6 +25,8 @@ xdg_config_home_links:
   - "espanso/espanso"
   - "gpg-tui"
   - "git/git"
+  - src: "gopass/config"
+    dest: "gopass"
   - "nvim/m-housh"
   - "nap"
   - "starship"
@@ -41,17 +43,17 @@ xdg_config_home_links:
   - src: "zsh/config/zsh-functions"
     dest: "zsh"
 
-# These files get linked in the `xdg_local_home` directory.
+# These files get linked in the `xdg_data_home` directory.
 # These are specified as a path from the root of the dotfiles repo, if
 # they get linked directly then they can just simply be the path, if
 # need to get linked inside of a sub-directory in the `xdg_config_home` then
 # they can use the `src:...dest:` style, where `src` is  the path from the root
 # of the dotfiles repo and `dest` is the sub-directory in `xdg_config_home`.
-xdg_local_home_links:
+xdg_data_home_links:
   - "scripts/scripts"
 
 # The location for local only zsh environment variable overrides.
-zsh_local_env_path: "{{ xdg_local_home }}/zsh/env.zsh"
+zsh_local_env_path: "{{ xdg_data_home }}/zsh/env.zsh"
 
 # These are files that are encrypted.  The playbook will decrypt them and
 # move them to their appropriate locations.  These should be specified with
